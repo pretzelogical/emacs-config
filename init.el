@@ -1,9 +1,16 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
+
+;; Fetch use-package
+;; Docs
+;; Web: https://www.gnu.org/software/emacs/manual/html_mono/use-package.html
+;; Emacs info mode: `C-h i`
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
 
 ;; Rust
 (use-package rustic
@@ -80,6 +87,8 @@
 	      ("M->". company-select-last)))
 
 ;; Do customize interface customizations in a different file than init.el
+(unless (file-exists-p "~/.emacs.d/custom-interface-settings.el")
+  (write-region "" nil "~/.emacs.d/custom-interface-settings.el"))
 (setq custom-file "~/.emacs.d/custom-interface-settings.el")
 (load custom-file)
 
