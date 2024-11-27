@@ -2,7 +2,7 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 
-;; Fetch use-package
+;; Install use-package if it isn't already installed and set up auto ensuring
 ;; Docs
 ;; Web: https://www.gnu.org/software/emacs/manual/html_mono/use-package.html
 ;; Emacs info mode: `C-h i`
@@ -12,9 +12,11 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+;; Theme
+(use-package dracula-theme)
+
 ;; Rust
 (use-package rustic
-  :ensure
   :bind (:map rustic-mode-map
               ("M-j" . lsp-ui-imenu)
               ("M-?" . lsp-find-references)
@@ -47,7 +49,6 @@
 ;; lsp mode
 
 (use-package lsp-mode
-  :ensure
   :commands lsp
   :custom
   ;; what to use when checking on-save. "check" is default, I prefer clippy
@@ -67,7 +68,6 @@
   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
 (use-package lsp-ui
-  :ensure
   :commands lsp-ui-mode
   :custom
   (lsp-ui-peek-always-show t)
@@ -75,7 +75,6 @@
   (lsp-ui-doc-enable nil))
 
 (use-package company
-  :ensure
   :custom
   (company-idle-delay 0.5) ;; how long to wait until popup
   ;; (company-begin-commands nil) ;; uncomment to disable popup
