@@ -1,0 +1,8 @@
+# This makes git ignore every file except for the ones that we need
+*
+!*/
+
+
+!.gitignore
+!init.el
+
