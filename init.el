@@ -46,8 +46,18 @@
   (add-hook 'before-save-hook 'lsp-format-buffer nil t))
 
 
-;; lsp mode
+;; Astro
 
+
+;; Treesitter grammar auto install
+(use-package treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist '(astro))
+  (global-treesit-auto-mode))
+
+;; lsp mode
 (use-package lsp-mode
   :commands lsp
   :custom
