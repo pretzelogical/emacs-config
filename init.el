@@ -77,6 +77,8 @@
   :ensure nil
   :hook emacs-lisp-mode)
 
+;; Langs
+
 ;; Rust
 (use-package rustic
   :bind (:map rustic-mode-map
@@ -110,6 +112,11 @@
 ;; Astro
 (use-package astro-ts-mode)
 
+
+;; Non coding
+(use-package visual-line-mode
+  :ensure nil
+  :hook org-mode)
 
 
 ;; Do customize interface customizations in a different file than init.el
