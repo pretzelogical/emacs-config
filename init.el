@@ -38,7 +38,15 @@
   (lsp-rust-analyzer-display-parameter-hints nil)
   (lsp-rust-analyzer-display-reborrow-hints nil)
   :config
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+
+  ;; Astro lsp connection
+  (add-to-list 'lsp-language-id-configuration '(("\\.astro\\'" . "astro")))
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection (lsp-stdio-connection '("astro-ls" "--stdio"))
+    :major-modes '(astro-ts-mode)
+    :server-id 'astro-ls)))
 
 (use-package lsp-ui
   :commands lsp-ui-mode
