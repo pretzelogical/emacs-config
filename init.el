@@ -66,6 +66,8 @@
 	      ("M-<". company-select-first)
 	      ("M->". company-select-last)))
 
+(use-package yasnippet)
+
 ;; Rust
 (use-package rustic
   :bind (:map rustic-mode-map
