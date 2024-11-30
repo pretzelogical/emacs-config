@@ -15,6 +15,19 @@
 ;; Theme
 (use-package dracula-theme)
 
+;; Treesitter grammars
+(setq treesit-language-source-alist
+      '((astro "https://github.com/virchau13/tree-sitter-astro" "master" "src")
+	(css "https://github.com/tree-sitter/tree-sitter-css")))
+
+;; Treesitter grammar auto install
+;; (use-package treesit-auto
+;;   :custom
+;;   (treesit-auto-install 'prompt)
+;;   :config
+;;   (treesit-auto-add-to-auto-mode-alist '(astro))
+;;   (global-treesit-auto-mode))
+
 ;; Rust
 (use-package rustic
   :bind (:map rustic-mode-map
@@ -45,17 +58,14 @@
     (setq-local buffer-save-without-query t))
   (add-hook 'before-save-hook 'lsp-format-buffer nil t))
 
+;; Emacs lisp
+(use-package emacs-lisp-mode
+  :ensure nil
+  :hook (emacs-lisp-mode . electric-pair-mode))
+
 
 ;; Astro
-
-
-;; Treesitter grammar auto install
-(use-package treesit-auto
-  :custom
-  (treesit-auto-install 'prompt)
-  :config
-  (treesit-auto-add-to-auto-mode-alist '(astro))
-  (global-treesit-auto-mode))
+(use-package astro-ts-mode)
 
 ;; lsp mode
 (use-package lsp-mode
