@@ -56,6 +56,7 @@
   (lsp-ui-doc-enable nil))
 
 (use-package company
+  :hook emacs-lisp-mode
   :custom
   (company-idle-delay 0.5) ;; how long to wait until popup
   ;; (company-begin-commands nil) ;; uncomment to disable popup
@@ -67,6 +68,10 @@
 	      ("M->". company-select-last)))
 
 (use-package yasnippet)
+
+(use-package electric-pair-mode
+  :ensure nil
+  :hook emacs-lisp-mode)
 
 ;; Rust
 (use-package rustic
@@ -97,12 +102,6 @@
   (when buffer-file-name
     (setq-local buffer-save-without-query t))
   (add-hook 'before-save-hook 'lsp-format-buffer nil t))
-
-;; Emacs lisp
-(use-package emacs-lisp-mode
-  :ensure nil
-  :hook (emacs-lisp-mode . electric-pair-mode))
-
 
 ;; Astro
 (use-package astro-ts-mode)
