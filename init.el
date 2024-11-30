@@ -18,7 +18,11 @@
 ;; Treesitter grammars
 (setq treesit-language-source-alist
       '((astro "https://github.com/virchau13/tree-sitter-astro" "master" "src")
-	(css "https://github.com/tree-sitter/tree-sitter-css")))
+	(css "https://github.com/tree-sitter/tree-sitter-css")
+	(typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+	(tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+	(rust "https://github.com/tree-sitter/tree-sitter-rust")
+	(javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")))
 
 ;; lsp mode
 (use-package lsp-mode
