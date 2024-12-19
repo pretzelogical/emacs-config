@@ -27,6 +27,7 @@
 ;; lsp mode
 (use-package lsp-mode
   :commands lsp
+  :hook (astro-ts-mode . lsp)
   :custom
   ;; what to use when checking on-save. "check" is default, I prefer clippy
   (lsp-rust-analyzer-cargo-watch-command "clippy")
@@ -110,13 +111,29 @@
   (add-hook 'before-save-hook 'lsp-format-buffer nil t))
 
 ;; Astro
-(use-package astro-ts-mode)
+(use-package astro-ts-mode
+  :mode "\\.astro\\'")
 
 
 ;; Non coding
+
+;; org mode and the such
 (use-package visual-line-mode
   :ensure nil
   :hook org-mode)
+
+(use-package flyspell
+  :ensure nil
+  :hook (org-mode markdown-mode))
+
+;; Evil mode
+(use-package evil)
+
+
+;; Tools
+(use-package eww
+  :ensure nil
+  :config (setq eww-search-prefix "https://lite.duckduckgo.com/lite?q="))
 
 
 ;; Do customize interface customizations in a different file than init.el
