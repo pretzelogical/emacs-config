@@ -126,6 +126,9 @@
   :ensure nil
   :hook (org-mode markdown-mode))
 
+(use-package mermaid-mode
+  :mode "\\.mmd\\'")
+
 ;; Evil mode
 (use-package evil)
 
